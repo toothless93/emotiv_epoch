@@ -32,14 +32,24 @@ def generate_cnn_model():
 
 def generate_model_mlp_w_dropout(input_shape):
     model = tf.keras.Sequential(name='Model')
-    model.add(layers.Dropout(0.3, input_shape=(input_shape,)))
-    # model.add(layers.Dense(128, activation='relu', name='Dense_1'))
-    model.add(layers.Dense(128, activation='relu', input_shape=(input_shape,), name='Dense_1'))
-    model.add(layers.Dropout(0.3))
+    model.add(layers.Dropout(0.3, input_shape=(input_shape,), name='Dropout_Input'))
+    model.add(layers.Dense(128, activation='relu', name='Dense_1'))
+    # model.add(layers.Dense(128, activation='relu', input_shape=(input_shape,), name='Dense_1'))
+    model.add(layers.Dropout(0.3, name='Dropout_1'))
     model.add(layers.Dense(64, activation='relu', name='Dense_2'))
-    model.add(layers.Dropout(0.2))
+    model.add(layers.Dropout(0.2, name='Dropout_2'))
     model.add(layers.Dense(32, activation='relu', name='Dense_3'))
-    model.add(layers.Dropout(0.2))
+    model.add(layers.Dropout(0.2, name='Dropout_3'))
+    model.add(layers.Dense(3, activation='softmax', name='Output'))
+
+    model.summary()
+    return model
+
+
+def generate_model_mlp(input_shape):
+    model = tf.keras.Sequential(name='Model')
+    model.add(layers.Dense(128, activation='relu', input_shape=(input_shape,), name='Dense_1'))
+    model.add(layers.Dense(64, activation='relu', name='Dense_2'))
     model.add(layers.Dense(3, activation='softmax', name='Output'))
 
     model.summary()

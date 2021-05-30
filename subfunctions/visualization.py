@@ -153,5 +153,5 @@ def plot_accuracy_loss(training_history):
     # ax2.plot(np.arange(0, epochs), training_history.history['accuracy'], color=COLOR_AX2)
     ax2.plot(np.arange(0, epochs), training_history.history['val_accuracy'], color=COLOR_AX4)
     plt.show()
-    plt.savefig('accuracy_loss_result.png')
+    # plt.savefig('accuracy_loss_result.png')
 
